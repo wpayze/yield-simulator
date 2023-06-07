@@ -1,0 +1,37 @@
+<div class="yield-net-return-wrapper">
+  <div class="yield-net-return">
+
+    <img src="../../assets/emerald-stay-black.svg">
+
+    <h2>Net Yield Simulator</h2>
+
+
+    <form #yieldForm="ngForm" (ngSubmit)="calculateReturn(yieldForm.value)">
+
+      <label for="purchasePrice">Property Purchase Price (€)</label>
+      <input type="number" id="purchasePrice" name="purchasePrice" [(ngModel)]="purchasePriceValue"
+        (ngModelChange)="updateAnnualFee()">
+
+      <label for="monthlyRent">Monthly Rent Amount (€)</label>
+      <input type="number" id="monthlyRent" name="monthlyRent" [(ngModel)]="monthlyRentValue"
+        (ngModelChange)="updateAnnualFee()">
+
+      <label for="annualFee">Annual Rental Rate</label>
+      <input type="number" id="annualFee" name="annualFee" [(ngModel)]="annualFeeValue" (ngModelChange)="updateMonthlyRent()">
+
+      <input type="submit" value="Calculate">
+    </form>
+
+    <div *ngIf="netReturn">
+      <h3>Net Yield</h3>
+      <div class="net-yield-container">
+        <div *ngFor="let income of netReturn.monthlyNetIncome; let i = index">
+          <h4>Year {{ i + 1 }}</h4>
+          <p>Monthly Net Income: {{ income | currency:'EUR':'symbol':'1.2-2' }}</p>
+          <p>Return on Investment: {{ netReturn.threeYearReturn[i] }}%</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

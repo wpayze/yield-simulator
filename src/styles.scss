@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap");
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Public Sans", sans-serif;
+}
+
+body {
+  background-image: url("./assets/hero.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
